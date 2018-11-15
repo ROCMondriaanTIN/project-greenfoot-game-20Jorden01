@@ -12,12 +12,14 @@ public class Enemy extends Mover {
     private int xMax;
     private boolean firstAct;
     private int speed;
+    private static int number;
 
-    public Enemy() {
+    public Enemy() {       
         super();
-        setImage("pokerMad.png");
-        getImage().mirrorHorizontally();
-        walkRange = 140;
+        walkRange();
+        number ++;
+        setImage("blockerMad.png");
+        getImage().mirrorHorizontally();       
         firstAct = true;
         speed = 1;
     }
@@ -26,13 +28,11 @@ public class Enemy extends Mover {
     public void act() {
         int x = getX();
         int y = getY();
-
         if (firstAct) {
             firstAct = false;
             xMin = x - walkRange / 2;
             xMax = x + walkRange / 2;
         }
-
         velocityX = speed;
         applyVelocity();
         if (getX() >= xMax) {
@@ -44,5 +44,21 @@ public class Enemy extends Mover {
             x = xMin;
             getImage().mirrorHorizontally();
         }
+     
     }
+    public void walkRange()
+    {
+        switch (number) {
+            case 0:
+            this.walkRange = 350;
+            break;
+            case 1:
+            this.walkRange = 198;
+            break;
+            default:
+            number = 0;
+            break;
+        }
+    }
+    
 }
