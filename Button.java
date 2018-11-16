@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Button extends Tile
 {
     private String button;
+    public int buttonNumber;
+    public boolean buttonPressed;
     public Button(String image,int width,int heigth) {
         super(image,width,heigth);
     }
@@ -25,10 +27,15 @@ public class Button extends Tile
         if(isTouching(Hero.class)) {
             button = "true";
             setImage("buttonBlue_pressed.png");
+            buttonPressed = true;
         }
         else {
             button = "false";
             setImage("buttonBlue.png");
+            buttonPressed = false;
         }
+    }
+    public boolean buttonPressed() {
+        return buttonPressed;
     }
 }
