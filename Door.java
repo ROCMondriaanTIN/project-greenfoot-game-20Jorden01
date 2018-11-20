@@ -8,9 +8,15 @@ import java.util.List;
  */
 public class Door extends Tile
 {
-    boolean iets;
+    boolean open;
+    private String image;
+    private String doorColor;
+    private boolean firstAct = true;
+    private String buttonColor;
     public Door(String image,int width,int heigth) {
         super(image,width,heigth);
+        this.image = image;
+        
     }
     /**
      * Act - do whatever the door wants to do. This method is called whenever
@@ -18,16 +24,66 @@ public class Door extends Tile
      */
     public void act() 
     {
+            checkLockColor();
             checkButton();
-            if (iets) {
+            changeImage();
+    }
+    public void checkButton() {
+       List <Button> button = getWorld().getObjects(Button.class);
+       for(int i = 0; i < button.size(); i ++) {
+           /*if(button.get(i).buttonPressed) {
+               if((button.get(i).color).equalsIgnoreCase(doorColor)) {
+                    iets = button.get(i).buttonPressed;
+                }  
+           }*/
+       if((button.get(i).color).equalsIgnoreCase(doorColor)) {
+           open = button.get(i).buttonPressed;
+        }  
+    }
+    }
+    public void checkLockColor() {
+        if(image.contains("Top")) {
+         Lock lock1 = (Lock)getOneObjectAtOffset(0, getImage().getHeight() * 2,Lock.class);
+         if (lock1 != null){
+               doorColor = lock1.getLockColor();
+         }
+    }
+    else {
+         Lock lock1 = (Lock)getOneObjectAtOffset(0, getImage().getHeight(),Lock.class);
+         if (lock1 != null){
+                doorColor = lock1.getLockColor();
+            }
+        }
+   
+      // List <Lock> lock = getObjectsInRange(getImage().getHeight() + 10, Lock.class);
+       //List <Lock> lock = getWorld().getObjectsAt(getX(),getY() + getImage().getHeight() / 2,Lock.class);
+     //  if(!lock.isEmpty()) {
+     //      System.out.print("empty");
+      // doorColor = lock.get(0).color;
+    //}
+       
+    }
+    public void changeImage() {
+        switch(image) {
+           case "door_closedMid.png": 
+            if (open) {
                setImage("door_openMid.png");
             }
             else {
                setImage("door_closedMid.png");
             }
+            break;
+           case "door_closedTop.png":
+            if (open) {
+               setImage("door_openTop.png");
+            }
+            else {
+               setImage("door_closedTop.png");
+            }
+            break;
+        }
     }
-    public void checkButton() {
-       List <Button> button = getWorld().getObjects(Button.class);
-       iets = button.get(1).buttonPressed;
+    public String color() {
+        return doorColor;
     }
 }

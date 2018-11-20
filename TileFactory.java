@@ -86,8 +86,27 @@ public class TileFactory {
             case 96:
                 tile = new Ladder("ladder_top.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
+                case 103:
+                tile = new Lock("lock_blue.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile.isSolid = true;
+                break;
+                case 104:
+                tile = new Lock("lock_green.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile.isSolid = true;
+                break;
+                case 105:
+                tile = new Lock("lock_red.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile.isSolid = true;
+                break;
+                case 106:
+                tile = new Lock("lock_yellow.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile.isSolid = true;
+                break;
             case 268:
                 tile = new Button("buttonBlue.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 270:
+                tile = new Button("buttonGreen.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
             case 305:
                 tile = new EnemySpawn("invisible.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);

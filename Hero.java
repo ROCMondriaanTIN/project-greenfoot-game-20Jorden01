@@ -67,7 +67,7 @@ public class Hero extends Mover {
             velocityX = -5;
             facingRight = false;
             if(onGround){
-                loopanimatie();
+                loopanimatie();                
             }
         } else if (Greenfoot.isKeyDown("d")) {
             velocityX = 5;
@@ -127,7 +127,7 @@ public class Hero extends Mover {
         }
         teller ++;
         scaleImage();
-        mirrorImage();
+       mirrorImage();
     }
     public void scaleImage() {
         getImage().scale(56, 78);
