@@ -9,7 +9,6 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class EnemySpawn extends Tile
 {
     private boolean spawn = true;
-    int i;
     public EnemySpawn(String image,int width,int heigth) {
         super(image,width,heigth);
     }

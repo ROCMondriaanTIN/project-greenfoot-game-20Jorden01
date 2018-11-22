@@ -16,7 +16,9 @@ public class Hero extends Mover {
     private int teller;
     private boolean mirror;
     private boolean facingRight;
-
+    private boolean keyPressed;
+    private String letter2;
+    boolean heeftLetter = false;
     public Hero() {
         super();
         gravity = 9.8;
@@ -39,6 +41,7 @@ public class Hero extends Mover {
         }
         handleInput();
         getWorld().showText(getX() + "," + getY(),500,50);
+        getWorld().showText(letter2,50,50);
         onGround = onGround();
         if(onGround || isTouching(Ladder.class)) {
             onGround2 = "true";
@@ -60,6 +63,15 @@ public class Hero extends Mover {
                 break;
             }
         }
+        for (Letter letter : getObjectsAtOffset(0,-80,Letter.class)) {
+            if (letter != null) {
+                //heeftLetter = letter2.isEmpty();
+                //if(!heeftLetter) {
+                    letter2 = letter.getLetter2();
+                //}
+                break;
+            }
+        }
     }
 
     public void handleInput() {        
@@ -78,6 +90,16 @@ public class Hero extends Mover {
         }
         if ((Greenfoot.isKeyDown("w") && onGround) || (Greenfoot.isKeyDown("w") && isTouching(Ladder.class))) {
             velocityY = -13;
+        }
+        if(Greenfoot.isKeyDown("space") && !keyPressed) {
+            checkDoor();
+            keyPressed = true;
+        }
+        if(!Greenfoot.isKeyDown("space") && keyPressed) {
+            keyPressed = false;
+        }
+         if(Greenfoot.isKeyDown("e")) {
+            letter2 = null;
         }
     }
 
@@ -127,7 +149,7 @@ public class Hero extends Mover {
         }
         teller ++;
         scaleImage();
-       mirrorImage();
+        mirrorImage();
     }
     public void scaleImage() {
         getImage().scale(56, 78);
@@ -139,6 +161,16 @@ public class Hero extends Mover {
         else if(!mirror && !facingRight) {
             getImage().mirrorHorizontally();
         }
+    }
+    public void checkDoor() {
+        Door door = (Door)getOneObjectAtOffset(0,0,Door.class);
+        if(door != null) {
+            if(door.open) {
+            door.findOtherDoor();
+            setLocation(door.doorX(),door.doorY());
+        }
+        }
+        
     }
     
 }

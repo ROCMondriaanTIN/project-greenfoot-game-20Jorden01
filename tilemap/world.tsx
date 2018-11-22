@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.0" name="world" tilewidth="129" tileheight="146" tilecount="247" columns="0">
+<tileset version="1.2" tiledversion="1.2.0" name="world" tilewidth="129" tileheight="146" tilecount="248" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="70" height="70" source="../images/box.png"/>
@@ -248,7 +248,7 @@
   <image width="70" height="70" source="../../platformerGraphicsDeluxeUpdated/Tiles/grassHalfRight.png"/>
  </tile>
  <tile id="82">
-  <image width="70" height="70" source="../../platformerGraphicsDeluxeUpdated/Tiles/grassHillLeft.png"/>
+  <image width="70" height="70" source="../../project-greenfoot-game-20Jorden01-master/images/grassHillLeft.png"/>
  </tile>
  <tile id="83">
   <image width="70" height="70" source="../../platformerGraphicsDeluxeUpdated/Tiles/grassHillLeft2.png"/>
@@ -741,5 +741,8 @@
  </tile>
  <tile id="305">
   <image width="51" height="51" source="../images/blockerMad.png"/>
+ </tile>
+ <tile id="307">
+  <image width="70" height="70" source="../images/Solid/letter.png"/>
  </tile>
 </tileset>

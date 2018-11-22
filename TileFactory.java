@@ -108,8 +108,18 @@ public class TileFactory {
                 case 270:
                 tile = new Button("buttonGreen.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
+                case 272:
+                tile = new Button("buttonRed.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 274:
+                tile = new Button("buttonYellow.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
             case 305:
                 tile = new EnemySpawn("invisible.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 307:
+                tile = new Letter("invisible.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile.isSolid = true;
                 break;
             default:
                 tile = new Tile("grassMid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);

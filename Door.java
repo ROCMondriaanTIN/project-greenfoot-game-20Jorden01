@@ -8,15 +8,22 @@ import java.util.List;
  */
 public class Door extends Tile
 {
-    boolean open;
+    boolean open;    
     private String image;
     private String doorColor;
     private boolean firstAct = true;
     private String buttonColor;
+    public int doorX;
+    public int doorY;
+    public int otherDoorX;
+    public int otherDoorY;
+    private int doorNumber;
+    private static int doors;
     public Door(String image,int width,int heigth) {
         super(image,width,heigth);
         this.image = image;
-        
+        doors ++;
+        doorNumber = doors;  
     }
     /**
      * Act - do whatever the door wants to do. This method is called whenever
@@ -24,6 +31,11 @@ public class Door extends Tile
      */
     public void act() 
     {
+        if(firstAct) {
+            doorY = this.getY();
+            doorX = this.getX();
+            firstAct = false;
+        }
             checkLockColor();
             checkButton();
             changeImage();
@@ -38,6 +50,7 @@ public class Door extends Tile
            }*/
        if((button.get(i).color).equalsIgnoreCase(doorColor)) {
            open = button.get(i).buttonPressed;
+           
         }  
     }
     }
@@ -85,5 +98,34 @@ public class Door extends Tile
     }
     public String color() {
         return doorColor;
+    }
+    public void findOtherDoor() {
+       List <Door> door = getWorld().getObjects(Door.class);
+       for(int i = 0; i < door.size(); i ++) {
+           /*if(button.get(i).buttonPressed) {
+               if((button.get(i).color).equalsIgnoreCase(doorColor)) {
+                    iets = button.get(i).buttonPressed;
+                }  
+           }*/
+       if((door.get(i).doorColor).equalsIgnoreCase(doorColor)) {
+           if(doorNumber != door.get(i).doorNumber && door.get(i).doorNumber != doorNumberTop()) {
+               otherDoorX = door.get(i).doorX;
+               otherDoorY = door.get(i).doorY;
+            }
+        }  
+    }
+    }
+    public int doorNumberTop() {
+        Door doortop = (Door)getOneObjectAtOffset(0, getImage().getHeight() * -1,Door.class);
+        return doortop.getDoorNumber();
+    }
+    public int doorX() {
+        return otherDoorX;
+    }
+    public int doorY() {
+        return otherDoorY;
+    }
+    public int getDoorNumber() {
+        return doorNumber;
     }
 }

@@ -12,6 +12,7 @@ public class Button extends Tile
     public int buttonNumber;
     public boolean buttonPressed;
     public String color;
+    private int counter;
     public Button(String image,int width,int heigth) {
         super(image,width,heigth);
         int begin = 6;
@@ -25,23 +26,34 @@ public class Button extends Tile
     public void act() 
     {
         checkHero();
+        image();
     }
     public void checkHero(){
         if(isTouching(Hero.class)) {
-            button = "true";
-            setImage("button" + color + "_pressed.png");
+            //setImage("button" + color + "_pressed.png");
             buttonPressed = true;
-            for(int i = 0; i < 100; i ++) {
-                
-            }
         }
-        else {            
-            button = "false";
-            setImage("button" + color + ".png");
+        else if (buttonPressed){
+            counter ++;
+            if(counter > 100) {
+            //setImage("button" + color + ".png");
             buttonPressed = false;
+            counter = 0;
         }
+        }
+        else {
+             buttonPressed = false;
+            }
     }
     public String checkButtonColor() {
         return color;
+    }
+    public void image() {
+        if (buttonPressed) {
+            setImage("button" + color + "_pressed.png");
+        }
+        else {
+            setImage("button" + color + ".png");
+        }
     }
 }
