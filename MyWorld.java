@@ -5,7 +5,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author R. Springer
  */
 public class MyWorld extends World {
-
+    
     private CollisionEngine ce;
 
     /**
@@ -88,5 +88,6 @@ public class MyWorld extends World {
     }
     public void resetStatic() {
         Letter.nummer = 0;
+        Letter.word = "fiets";
     }
 }

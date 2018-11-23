@@ -19,6 +19,7 @@ public class Button extends Tile
         int end = image.indexOf(".");
         color = image.substring(begin,end);
     }
+
     /**
      * Act - do whatever the Button wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -28,6 +29,7 @@ public class Button extends Tile
         checkHero();
         image();
     }
+
     public void checkHero(){
         if(isTouching(Hero.class)) {
             //setImage("button" + color + "_pressed.png");
@@ -36,18 +38,20 @@ public class Button extends Tile
         else if (buttonPressed){
             counter ++;
             if(counter > 100) {
-            //setImage("button" + color + ".png");
-            buttonPressed = false;
-            counter = 0;
-        }
+                //setImage("button" + color + ".png");
+                buttonPressed = false;
+                counter = 0;
+            }
         }
         else {
-             buttonPressed = false;
-            }
+            buttonPressed = false;
+        }
     }
+
     public String checkButtonColor() {
         return color;
     }
+
     public void image() {
         if (buttonPressed) {
             setImage("button" + color + "_pressed.png");

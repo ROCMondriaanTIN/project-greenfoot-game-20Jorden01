@@ -15,6 +15,7 @@ public class Lock extends Tile
         int begin = image.indexOf("_") + 1;
         color = image.substring(begin,end);
     }
+    // lock_green.png
     /**
      * Act - do whatever the Lock wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
