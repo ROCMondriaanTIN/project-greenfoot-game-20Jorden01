@@ -37,7 +37,7 @@ public class Button extends Tile
         }
         else if (buttonPressed){
             counter ++;
-            if(counter > 100) {
+            if(counter > 500) {
                 //setImage("button" + color + ".png");
                 buttonPressed = false;
                 counter = 0;

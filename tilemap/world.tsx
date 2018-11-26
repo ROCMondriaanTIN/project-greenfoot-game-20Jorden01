@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<tileset version="1.2" tiledversion="1.2.0" name="world" tilewidth="129" tileheight="146" tilecount="249" columns="0">
+<tileset version="1.2" tiledversion="1.2.0" name="world" tilewidth="129" tileheight="146" tilecount="250" columns="0">
  <grid orientation="orthogonal" width="1" height="1"/>
  <tile id="0">
   <image width="70" height="70" source="../images/box.png"/>
@@ -747,5 +747,8 @@
  </tile>
  <tile id="310">
   <image width="70" height="70" source="../../letter2.png"/>
+ </tile>
+ <tile id="311">
+  <image width="66" height="92" source="../../platformerGraphicsDeluxeUpdated/Player/p1_front.png"/>
  </tile>
 </tileset>

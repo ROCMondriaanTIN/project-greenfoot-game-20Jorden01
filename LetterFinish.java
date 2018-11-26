@@ -13,6 +13,7 @@ public class LetterFinish extends Tile
     public String letter;
     private boolean firstAct = true;
     private boolean activated;
+    static int placedLetters = Letter.word.length();
     public LetterFinish(String image,int width,int heigth) {
         super(image,width,heigth);
         nummer2 = nummer;
@@ -31,14 +32,17 @@ public class LetterFinish extends Tile
         for (Hero hero : getObjectsAtOffset(0,-80,Hero.class)) {
             if (hero != null) {
                 if(hero.getLetter().equalsIgnoreCase(letter) && !activated) {
-                    System.out.print("true");
                     setImage("Letters/letter_" + letter.toUpperCase() + ".png");
                     getImage().scale(60,60);
+                    placedLetters --;
                     hero.resetLetter();
                     activated = true;
                 }
                 break;
             }
+        }
+        if(placedLetters == 0) {
+            Greenfoot.stop();
         }
     }
     public void toLetter() {

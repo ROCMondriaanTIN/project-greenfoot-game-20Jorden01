@@ -7,6 +7,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class MyWorld extends World {
     
     private CollisionEngine ce;
+    static int y;
 
     /**
      * Constructor for objects of class MyWorld.
@@ -66,7 +67,7 @@ public class MyWorld extends World {
 
         // Alle objecten toevoegen aan de wereld: camera, main karakter en mogelijke enemies
         addObject(camera, 0, 0);
-        addObject(hero, 300, 200);
+        addObject(hero, 300,1000);
         //addObject(new Enemy(), 1550, 994);
         //addObject(new Enemy(), 539, 634);
         
@@ -88,6 +89,8 @@ public class MyWorld extends World {
     }
     public void resetStatic() {
         Letter.nummer = 0;
-        Letter.word = "fiets";
+        Letter.word = "woord";
+        LetterFinish.nummer = 0;
+        Door.doors = 0;
     }
 }

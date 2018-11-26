@@ -59,7 +59,7 @@ public class Hero extends Mover {
 
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
-                getWorld().removeObject(this);
+                //getWorld().removeObject(this);
                 break;
             }
         }
@@ -98,9 +98,6 @@ public class Hero extends Mover {
         }
         if(!Greenfoot.isKeyDown("space") && keyPressed) {
             keyPressed = false;
-        }
-        if(Greenfoot.isKeyDown("e")) {
-            letter2 = "";
         }
     }
 

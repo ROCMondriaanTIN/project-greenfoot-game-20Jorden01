@@ -10,6 +10,8 @@ public class Tile extends Actor {
     public boolean isSolid = false;
     private static int id;
     public int _id;
+    public int x;
+    public int y;
 
     /**
      * Contructor of the tile. Creates a tile based on image, width and height

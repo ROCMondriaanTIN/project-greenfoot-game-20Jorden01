@@ -18,12 +18,14 @@ public class Door extends Tile
     public int otherDoorX;
     public int otherDoorY;
     private int doorNumber;
-    private static int doors;
+    public static int doors;
     public Door(String image,int width,int heigth) {
         super(image,width,heigth);
         this.image = image;
         doors ++;
         doorNumber = doors;  
+        //doorY = y;
+        //doorX = x;
     }
 
     /**
@@ -33,8 +35,9 @@ public class Door extends Tile
     public void act() 
     {
         if(firstAct) {
-            doorY = this.getY();
-            doorX = this.getX();
+            //doorY = this.getY();
+            //doorX = this.getX();
+            
             firstAct = false;
         }
         checkLockColor();
@@ -115,8 +118,10 @@ public class Door extends Tile
             }*/
             if((door.get(i).doorColor).equalsIgnoreCase(doorColor)) {
                 if(doorNumber != door.get(i).doorNumber && door.get(i).doorNumber != doorNumberTop()) {
-                    otherDoorX = door.get(i).doorX;
-                    otherDoorY = door.get(i).doorY;
+                    //otherDoorX = door.get(i).doorX;
+                    //otherDoorY = door.get(i).doorY;
+                    otherDoorX = door.get(i).x;
+                    otherDoorY = door.get(i).y;
                 }
             }  
         }

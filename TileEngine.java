@@ -104,6 +104,7 @@ public class TileEngine {
                 // Als de mapIcon -1 is dan wordt de code hieronder overgeslagen
                 // Dus er wordt geen tile aangemaakt. -1 is dus geen tile;
                 Tile createdTile = this.tileFactory.createTile(mapIcon);
+                
 
                 addTileAt(createdTile, x, y);
             }
@@ -125,6 +126,8 @@ public class TileEngine {
         // breedte en hoogte optellen zodat de X en Y links boven zit voor 
         // het toevoegen van het object.
         this.world.addObject(tile, (colom * TILE_WIDTH) + TILE_WIDTH / 2, (row * TILE_HEIGHT) + TILE_HEIGHT / 2);
+        tile.x = (colom * TILE_WIDTH) + TILE_WIDTH / 2;
+        tile.y = (row * TILE_HEIGHT) + TILE_HEIGHT / 2;
         // Toevoegen aan onze lokale array. Makkelijk om de tile op te halen
         // op basis van een x en y positie van de map
         this.generateMap[row][colom] = tile;
