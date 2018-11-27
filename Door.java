@@ -11,7 +11,6 @@ public class Door extends Tile
     boolean open;    
     private String image;
     private String doorColor;
-    private boolean firstAct = true;
     private String buttonColor;
     public int doorX;
     public int doorY;
@@ -34,12 +33,6 @@ public class Door extends Tile
      */
     public void act() 
     {
-        if(firstAct) {
-            //doorY = this.getY();
-            //doorX = this.getX();
-            
-            firstAct = false;
-        }
         checkLockColor();
         checkButton();
         changeImage();

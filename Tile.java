@@ -40,4 +40,10 @@ public class Tile extends Actor {
     public boolean getIsSolid() {
         return isSolid;
     }
+    public int x() {
+        return x;
+    }
+    public int y() {
+        return y;
+    }
 }

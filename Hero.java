@@ -19,6 +19,11 @@ public class Hero extends Mover {
     private boolean keyPressed;
     public String letter2 = new String();
     boolean noLetter = false;
+    private int levens;
+    private boolean gameOver;
+    private boolean firstAct = true;
+    private int spawnX;
+    private int spawnY;
     public Hero() {
         super();
         gravity = 9.8;
@@ -26,56 +31,47 @@ public class Hero extends Mover {
         drag = 0.8;
         setImage("p1_front.png");
         scaleImage();
+        levens = 3;
     }
 
     @Override
     public void act() {
-        if(velocityX >= -0.3 && velocityX <= 0.3 && onGround) {
-            setImage("p1_front.png");
-            scaleImage();
+        if(firstAct) {
+            firstAct = false;
+            spawnX = getX();
+            spawnY = getY();
         }
-        if (!onGround) {
-            setImage("p1_jump.png");
-            scaleImage();
-            mirrorImage();
+        if(Greenfoot.isKeyDown("h")) {
+            //System.out.print("iets");
+            gameOver = false;
+            if (getWorld() instanceof World2) {
+                Greenfoot.setWorld(new World2());
+            }
         }
-        handleInput();
         getWorld().showText(getX() + "," + getY(),500,50);
+        getWorld().showText(Integer.toString(levens),500,100);
         getWorld().showText(letter2,50,50);
-        onGround = onGround();
-        if(onGround || isTouching(Ladder.class)) {
-            onGround2 = "true";
-        }
-        else {
-            onGround2 = "false";
-        }
-        getWorld().showText(onGround2,500,80);
-        velocityX *= drag;
-        velocityY += acc;
-        if (velocityY > gravity) {
-            velocityY = gravity;
-        }
-        applyVelocity();
-
-        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null) {
-                //getWorld().removeObject(this);
-                break;
+        if(!gameOver) {  
+            checkLevens();
+            animatie2();
+            handleInput();
+            //onGround = onGround();
+            onGround = onGround();
+            ladder();
+            getWorld().showText(onGround2,500,80);
+            applyVelocity();
+            velocityX *= drag;
+            velocityY += acc;
+            if (velocityY > gravity) {
+                velocityY = gravity;
             }
+            detect();
         }
-        for (Letter letter : getObjectsAtOffset(0,-80,Letter.class)) {
-            if (letter != null) {
-                noLetter = letter2.isEmpty();
-                if(noLetter && !letter.getHit()) {
-                 letter2 = letter.getLetter2();
-                 letter.hitByHero();
-                }
-                break;
-            }
-        }
+        
     }
 
-    public void handleInput() {        
+    public void handleInput() { 
+        
         if (Greenfoot.isKeyDown("a")) {
             velocityX = -5;
             facingRight = false;
@@ -151,6 +147,18 @@ public class Hero extends Mover {
         mirrorImage();
     }
 
+    public void animatie2() {
+        if(velocityX >= -0.3 && velocityX <= 0.3 && onGround) {
+            setImage("p1_front.png");
+            scaleImage();
+        }
+        if (!onGround) {
+            setImage("p1_jump.png");
+            scaleImage();
+            mirrorImage();
+        }
+    }
+
     public void scaleImage() {
         getImage().scale(56, 78);
     }
@@ -173,10 +181,52 @@ public class Hero extends Mover {
             }
         }
     }
+
     public String getLetter() {
         return letter2;
     }
+
     public void resetLetter() {
         letter2 = "";
+    }
+
+    public void checkLevens() {
+        if(levens == 0) {
+            getWorld().addObject(new GameOver(),300,300);
+            gameOver = true;
+        }
+    }
+
+    public void detect() {
+        for (Actor enemy : getIntersectingObjects(Enemy.class)) {
+            if (enemy != null) {
+                setLocation(spawnX,spawnY); 
+                levens --;  
+                break;
+            }
+        }
+        for (Letter letter : getObjectsAtOffset(0,-80,Letter.class)) {
+            if (letter != null) {
+                noLetter = letter2.isEmpty();
+                if(noLetter && !letter.getHit()) {
+                    letter2 = letter.getLetter2();
+                    letter.hitByHero();
+                }
+                break;
+            }
+        }
+        if(isTouching(Deathtiles.class)) {
+              setLocation(spawnX,spawnY); 
+              levens --;
+        }
+    }
+
+    public void ladder() {
+        if(onGround || isTouching(Ladder.class)) {
+            onGround2 = "true";
+        }
+        else {
+            onGround2 = "false";
+        }
     }
 }

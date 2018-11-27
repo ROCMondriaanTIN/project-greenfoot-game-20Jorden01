@@ -1,6 +1,6 @@
 
 import greenfoot.*;
-
+import java.util.List;
 /**
  *
  * @author R. Springer
@@ -37,22 +37,49 @@ public class Mover extends Actor {
             hasCamera = false;
         }
     }
-    
+
     public boolean onGround() {
         Tile tile = (Tile)getOneObjectAtOffset(0, getImage().getHeight() / 2,Tile.class);
-       if (tile != null)
-       {
-           if (tile.getIsSolid()) {
-               return true;
+        if (tile != null)
+        {
+            if (tile.getIsSolid()) {
+                return true;
             }
             else {
-               return false;
+                return false;
             }
-       }
-       else {
-           return false;
+        }
+        else {
+            return false;
         }
 
+    }
+    //TEST
+    public boolean onGround2() {
+        //Tile tile = (Tile)getObjectsInRange(getImage().getHeight() / 2 + 2,Tile.class);
+        List <Tile> tile = getObjectsInRange(100,Tile.class);
+        //List <Button> button = getWorld().getObjects(Button.class);
+        if(tile != null) {
+            if(tile.size() != 0) {
+            for(int i = 0; i < tile.size(); i ++) {
+                //if(tile.get(i).x > getX() + getImage().getWidth() / 2 && tile.get(i).x < getX() + getImage().getWidth() / 2 * -1 && tile.get(i).y < getY() + getImage().getHeight() / 2) {
+                 if(tile.get(i).x > getX() && tile.get(i).x < getX()&& tile.get(i).y < getY()) {
+                    System.out.print("true");
+                    return true;
+                }
+                else {
+                    return false;
+                }
+            }
+        }
+        else {
+        return false;
+        }
+        }
+        else {
+            return false;
+        }
+        return false;
     }
 
     /**
@@ -111,10 +138,10 @@ public class Mover extends Actor {
     @Override
     public String toString() {
         return "X: " + getX() + "\n"
-                + "Y: " + getY() + "\n"
-                + "screenX: " + getScreenX() + "\n"
-                + "screenY: " + getScreenY() + "\n"
-                + "velocityX: " + velocityX + "\n"
-                + "velocityY: " + velocityY + "\n";
+        + "Y: " + getY() + "\n"
+        + "screenX: " + getScreenX() + "\n"
+        + "screenY: " + getScreenY() + "\n"
+        + "velocityX: " + velocityX + "\n"
+        + "velocityY: " + velocityY + "\n";
     }
 }
