@@ -20,7 +20,7 @@ public class EnemySpawn extends Tile
     {
         if(spawn) {
             spawn = false;
-            getWorld().addObject(new Enemy(),x,y + 4);
+            getWorld().addObject(new Enemy(),x,y + 5);
         }
     }
 }

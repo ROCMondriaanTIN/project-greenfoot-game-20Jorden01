@@ -11,7 +11,6 @@ public class Hero extends Mover {
     private final double acc;
     private final double drag;   
     private boolean onGround;
-    private String onGround2;
     private String button;
     private int teller;
     private boolean mirror;
@@ -19,7 +18,7 @@ public class Hero extends Mover {
     private boolean keyPressed;
     public String letter2 = new String();
     boolean noLetter = false;
-    private int levens;
+    public int lives;
     private boolean gameOver;
     private boolean firstAct = true;
     private int spawnX;
@@ -31,7 +30,7 @@ public class Hero extends Mover {
         drag = 0.8;
         setImage("p1_front.png");
         scaleImage();
-        levens = 3;
+        lives = 3;
     }
 
     @Override
@@ -42,23 +41,19 @@ public class Hero extends Mover {
             spawnY = getY();
         }
         if(Greenfoot.isKeyDown("h")) {
-            //System.out.print("iets");
             gameOver = false;
             if (getWorld() instanceof World2) {
                 Greenfoot.setWorld(new World2());
             }
         }
         getWorld().showText(getX() + "," + getY(),500,50);
-        getWorld().showText(Integer.toString(levens),500,100);
+        getWorld().showText(Integer.toString(lives),500,100);
         getWorld().showText(letter2,50,50);
         if(!gameOver) {  
             checkLevens();
             animatie2();
             handleInput();
-            //onGround = onGround();
             onGround = onGround();
-            ladder();
-            getWorld().showText(onGround2,500,80);
             applyVelocity();
             velocityX *= drag;
             velocityY += acc;
@@ -191,7 +186,7 @@ public class Hero extends Mover {
     }
 
     public void checkLevens() {
-        if(levens == 0) {
+        if(lives == 0) {
             getWorld().addObject(new GameOver(),300,300);
             gameOver = true;
         }
@@ -201,7 +196,7 @@ public class Hero extends Mover {
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
             if (enemy != null) {
                 setLocation(spawnX,spawnY); 
-                levens --;  
+                lives --;  
                 break;
             }
         }
@@ -217,16 +212,10 @@ public class Hero extends Mover {
         }
         if(isTouching(Deathtiles.class)) {
               setLocation(spawnX,spawnY); 
-              levens --;
+              lives --;
         }
     }
-
-    public void ladder() {
-        if(onGround || isTouching(Ladder.class)) {
-            onGround2 = "true";
-        }
-        else {
-            onGround2 = "false";
-        }
+    public int getLives() {
+        return lives;
     }
 }

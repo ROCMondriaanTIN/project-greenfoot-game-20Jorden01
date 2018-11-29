@@ -54,34 +54,40 @@ public class Mover extends Actor {
         }
 
     }
-    //TEST
-    public boolean onGround2() {
-        //Tile tile = (Tile)getObjectsInRange(getImage().getHeight() / 2 + 2,Tile.class);
-        List <Tile> tile = getObjectsInRange(100,Tile.class);
-        //List <Button> button = getWorld().getObjects(Button.class);
-        if(tile != null) {
-            if(tile.size() != 0) {
-            for(int i = 0; i < tile.size(); i ++) {
-                //if(tile.get(i).x > getX() + getImage().getWidth() / 2 && tile.get(i).x < getX() + getImage().getWidth() / 2 * -1 && tile.get(i).y < getY() + getImage().getHeight() / 2) {
-                 if(tile.get(i).x > getX() && tile.get(i).x < getX()&& tile.get(i).y < getY()) {
-                    System.out.print("true");
-                    return true;
-                }
-                else {
-                    return false;
-                }
+    public boolean onGroundRight() {
+    Tile tile = (Tile)getOneObjectAtOffset(getImage().getWidth() / 2, getImage().getHeight(),Tile.class);
+        if (tile != null)
+        {
+            if (tile.getIsSolid()) {
+                return true;
             }
-        }
-        else {
-        return false;
-        }
+            else {
+                return false;
+            }
         }
         else {
             return false;
         }
-        return false;
-    }
 
+}
+
+public boolean onGroundLeft() {
+        Tile tile = (Tile)getOneObjectAtOffset(getImage().getWidth() / 2 * -1, getImage().getHeight(),Tile.class);
+        if (tile != null)
+        {
+            if (tile.getIsSolid()) {
+                return true;
+            }
+            else {
+                return false;
+            }
+        }
+        else {
+            return false;
+        }
+    }
+    //TEST
+   
     /**
      * Apply change in position based on velocityX and velocityY
      */
