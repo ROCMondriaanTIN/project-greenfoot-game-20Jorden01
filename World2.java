@@ -71,6 +71,7 @@ public class World2 extends World
         // Alle objecten toevoegen aan de wereld: camera, main karakter en mogelijke enemies
         addObject(camera, 0, 0);
         addObject(hero, 200,1700);
+        addObject(new Hud(),0,0);
         //addObject(new Enemy(), 1550, 994);
         //addObject(new Enemy(), 539, 634);
         
@@ -95,5 +96,7 @@ public class World2 extends World
         LetterFinish.nummer = 0;
         Door.doors = 0;
         LetterFinish.placedLetters = Letter.word.length();
+        Heart.nummer2 = 0;
+        Hero.score = 0;
     }
 }

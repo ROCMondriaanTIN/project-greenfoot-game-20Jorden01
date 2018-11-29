@@ -80,5 +80,7 @@ public class World3 extends World
         LetterFinish.nummer = 0;
         Door.doors = 0;
         LetterFinish.placedLetters = Letter.word.length();
+        Heart.nummer2 = 0;
+        Hero.score = 0;
     }
 }

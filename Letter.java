@@ -75,6 +75,7 @@ public class Letter extends Tile
         setImage("invisible.png");
         isSolid = false;
         hit = true;
+        Hero.score += 10;
     }
 
     public String getLetter2() {

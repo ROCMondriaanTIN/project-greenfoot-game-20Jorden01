@@ -6,7 +6,7 @@ import greenfoot.*;
  * @author R. Springer
  */
 public class Hero extends Mover {
-
+    private int timer;
     private final double gravity;
     private final double acc;
     private final double drag;   
@@ -23,6 +23,7 @@ public class Hero extends Mover {
     private boolean firstAct = true;
     private int spawnX;
     private int spawnY;
+    static int score;
     public Hero() {
         super();
         gravity = 9.8;
@@ -89,6 +90,9 @@ public class Hero extends Mover {
         }
         if(!Greenfoot.isKeyDown("space") && keyPressed) {
             keyPressed = false;
+        }
+        if(Greenfoot.isKeyDown("f")) {
+            score ++;
         }
     }
 
@@ -194,11 +198,16 @@ public class Hero extends Mover {
 
     public void detect() {
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null) {
+            if (enemy != null && timer < 10) {
                 setLocation(spawnX,spawnY); 
-                lives --;  
+                lives --;
+                timer = 10;
                 break;
             }
+            else{
+               timer --; 
+            }
+            
         }
         for (Letter letter : getObjectsAtOffset(0,-80,Letter.class)) {
             if (letter != null) {
