@@ -37,6 +37,7 @@ public class LetterFinish extends Tile
                     placedLetters --;
                     hero.resetLetter();
                     activated = true;
+                    Hero.score += 100;
                 }
                 break;
             }

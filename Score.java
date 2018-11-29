@@ -28,35 +28,23 @@ public class Score extends Hud
         updateScore();
         updateImage();
     }
-
     public void updateScore() {
         List <Score> score = getWorld().getObjects(Score.class);
         switch(getal.length()) {
             case 4:
-            score.get(3).getal2 = getal.charAt(3);
-            score.get(2).getal2 = getal.charAt(2);
-            score.get(1).getal2 = getal.charAt(1);
-            score.get(0).getal2 = getal.charAt(0);
-            break;
+            score.get(0).getal2 = getal.charAt(getal.length() - 4);
             case 3:
-            score.get(3).getal2 = getal.charAt(2);
-            score.get(2).getal2 = getal.charAt(1);
-            score.get(1).getal2 = getal.charAt(0);
-            break;
+            score.get(1).getal2 = getal.charAt(getal.length() - 3);
             case 2:
-            score.get(3).getal2 = getal.charAt(1);
-            score.get(2).getal2 = getal.charAt(0);
-            break;
+            score.get(2).getal2 = getal.charAt(getal.length() - 2);
             case 1:
-            score.get(3).getal2 = getal.charAt(0);
+            score.get(3).getal2 = getal.charAt(getal.length() - 1);
             break;
         }
     }
-
     public void scoreToString() {
         getal = Integer.toString(Hero.score);
     }
-
     public void updateImage() {
         setImage("Score/hud_" + getal2 +  ".png");
     }
