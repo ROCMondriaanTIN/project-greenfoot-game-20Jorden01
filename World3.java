@@ -9,7 +9,9 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class World3 extends World
 {
     private CollisionEngine ce;
-
+    private int spawnX = 400;
+    private int spawnY = 700;
+    private String word = "Finish";
     /**
      * Constructor for objects of class MyWorld.
      *
@@ -54,10 +56,8 @@ public class World3 extends World
 
         // Alle objecten toevoegen aan de wereld: camera, main karakter en mogelijke enemies
         addObject(camera, 0, 0);
-        addObject(hero, 400,700);
-        addObject(new Hud(),0,0);
-        //addObject(new Enemy(), 1550, 994);
-        //addObject(new Enemy(), 539, 634);
+        addObject(hero, spawnX,spawnY);
+        addObjects();
         
         // Force act zodat de camera op de juist plek staat.
         camera.act();
@@ -76,11 +76,14 @@ public class World3 extends World
     }
     public void resetStatic() {
         Letter.nummer = 0;
-        Letter.word = "Finish";
+        Letter.word = word;
         LetterFinish.nummer = 0;
         Door.doors = 0;
         LetterFinish.placedLetters = Letter.word.length();
         Heart.nummer2 = 0;
         Hero.score = 0;
+    }
+    public void addObjects() {
+        addObject(new Hud(),0,0);
     }
 }

@@ -43,6 +43,7 @@ public class LetterFinish extends Tile
             }
         }
         if(placedLetters == 0) {
+            Hero.score += Timer.secondsOver;
             Greenfoot.stop();
         }
     }

@@ -8,14 +8,10 @@ import java.util.List;
  */
 public class Score extends Hud
 {
-    static int nummer2 = 1;
-    public int nummer;
     public String getal;
     public char getal2 = '0';
     public Score() {
         setImage("Score/hud_0.png");
-        nummer = nummer2;
-        nummer2 ++;
     }
 
     /**
@@ -31,8 +27,8 @@ public class Score extends Hud
     public void updateScore() {
         List <Score> score = getWorld().getObjects(Score.class);
         switch(getal.length()) {
-            case 4:
-            score.get(0).getal2 = getal.charAt(getal.length() - 4);
+            /*case 4:
+            score.get(0).getal2 = getal.charAt(getal.length() - 4); */
             case 3:
             score.get(1).getal2 = getal.charAt(getal.length() - 3);
             case 2:

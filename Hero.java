@@ -41,14 +41,13 @@ public class Hero extends Mover {
             spawnX = getX();
             spawnY = getY();
         }
+        Timer.timer ++;
         if(Greenfoot.isKeyDown("h")) {
             gameOver = false;
             if (getWorld() instanceof World2) {
                 Greenfoot.setWorld(new World2());
             }
         }
-        getWorld().showText(getX() + "," + getY(),500,50);
-        getWorld().showText(Integer.toString(lives),500,100);
         getWorld().showText(letter2,50,50);
         if(!gameOver) {  
             checkLevens();
@@ -63,7 +62,7 @@ public class Hero extends Mover {
             }
             detect();
         }
-        
+         
     }
 
     public void handleInput() { 
@@ -213,8 +212,15 @@ public class Hero extends Mover {
             if (letter != null) {
                 noLetter = letter2.isEmpty();
                 if(noLetter && !letter.getHit()) {
+                    if(letter.getUsedLetter()) {
                     letter2 = letter.getLetter2();
                     letter.hitByHero();
+                    score += 10;
+                }
+                else {
+                    score -= 10;
+                    letter.hitByHero();
+                }
                 }
                 break;
             }

@@ -26,6 +26,10 @@ public class Hud extends Actor
             for(int i = 0; i < 4; i ++) {
             getWorld().addObject(new Score(),i * 30 + 490,25);
         }
+            for(int i = 0; i < 3; i ++) {
+            getWorld().addObject(new Timer(),i * 20 + 280,25);
+        }
+        getWorld().addObject(new Vraag(),300,580);
         }
     }
     

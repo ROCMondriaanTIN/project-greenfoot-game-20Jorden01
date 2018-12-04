@@ -18,6 +18,7 @@ public class Letter extends Tile
     String test;
     private boolean firstAct = true;
     private boolean hit;
+    public boolean usedLetter;
     public Letter(String image,int width,int heigth) {
         super(image,width,heigth);
         nummer2 = nummer;
@@ -40,7 +41,7 @@ public class Letter extends Tile
     public String getLetter() {
         String[] letters = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
         int teller = 0;
-        if(nummer2 == 0) {
+        if(nummer2 == 0) {            
             word2 = word.substring(0).toUpperCase();
             //System.out.print(word2 + ", ");
         }
@@ -51,12 +52,16 @@ public class Letter extends Tile
             letter = letters[Greenfoot.getRandomNumber(26)];
             iets = word2.contains(letter);
             if(iets) {
-                word2 = word2.replaceFirst(letter,"-");
+                word2 = word2.replaceFirst(letter,"");
+                usedLetter = true;
                 //System.out.print(word2 + ", ");
                 teller ++;
                 if(teller >= word.length()) {
                     break;
                 }
+            }
+            else if(word2.length() == 0) {
+                break;
             }
         }
         return letter;
@@ -75,7 +80,6 @@ public class Letter extends Tile
         setImage("invisible.png");
         isSolid = false;
         hit = true;
-        Hero.score += 10;
     }
 
     public String getLetter2() {
@@ -83,5 +87,8 @@ public class Letter extends Tile
     }
     public boolean getHit() {
         return hit;
+    }
+    public boolean getUsedLetter() {
+        return usedLetter;
     }
 }
