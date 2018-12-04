@@ -85,6 +85,7 @@ public class Door extends Tile
             else {
                 setImage("door_closedMid.png");
             }
+            scaleImage();
             break;
             case "door_closedTop.png":
             if (open) {
@@ -93,6 +94,7 @@ public class Door extends Tile
             else {
                 setImage("door_closedTop.png");
             }
+            scaleImage();
             break;
         }
     }
@@ -135,5 +137,8 @@ public class Door extends Tile
 
     public int getDoorNumber() {
         return doorNumber;
+    }
+    public void scaleImage() {
+        getImage().scale(60,60);
     }
 }

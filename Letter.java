@@ -77,7 +77,7 @@ public class Letter extends Tile
         return word2;
     }
     public void hitByHero() {
-        setImage("invisible.png");
+        setImage("bg3.png");
         isSolid = false;
         hit = true;
     }

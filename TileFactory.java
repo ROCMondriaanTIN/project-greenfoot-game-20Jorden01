@@ -14,6 +14,10 @@ public class TileFactory {
     public Tile createTile(int mapIcon) {
         Tile tile;
         switch (mapIcon) {
+            case -1:
+                tile = new Tile("bg3.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile.isSolid = false;
+                break;
             case 51:
                 tile = new Tile("box.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;
@@ -115,10 +119,10 @@ public class TileFactory {
                 tile = new Button("buttonYellow.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
             case 50:
-                tile = new EnemySpawn("invisible.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new EnemySpawn("bg3.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
                 case 76:
-                tile = new Letter("invisible.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new Letter("bg3.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;
                 break;
                 case 49:

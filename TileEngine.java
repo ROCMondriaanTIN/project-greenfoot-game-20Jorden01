@@ -100,9 +100,9 @@ public class TileEngine {
                 // Nummer ophalen in de int array
                 mapID++;
                 int mapIcon = this.map[y][x];
-                if (mapIcon == -1) {
-                    continue;
-                }
+                //if (mapIcon == -1) {
+                //    continue;
+                //}
                 // Als de mapIcon -1 is dan wordt de code hieronder overgeslagen
                 // Dus er wordt geen tile aangemaakt. -1 is dus geen tile;
                 Tile createdTile = this.tileFactory.createTile(mapIcon);
