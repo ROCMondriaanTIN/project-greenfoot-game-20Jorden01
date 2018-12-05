@@ -19,29 +19,32 @@ public class Timer extends Hud
      */
     public Timer() {
         setImage("Score/hud_0.png");
-        
     }
+
     public void act() 
     {
         if(firstAct) {
             firstAct = false;
             secondsOver = 600;
         }
-        
-        if(timer > 60) {
-            secondsOver --;
-            timer = 0;
+        if(!Hero.gameOver) {
+            if(secondsOver == 0) {
+                Hero.gameOver = true;    
+            }
+
+            if(timer > 60) {
+                secondsOver --;
+                timer = 0;
+            }      
         }
         scoreToString();
-        updateScore();
-        updateImage();    
+        updateTime();
+        updateImage(); 
     }
 
-    public void updateScore() {
+    public void updateTime() {
         List <Timer> timer = getWorld().getObjects(Timer.class);
         switch(getal.length()) {
-            /*case 4:
-            score.get(0).getal2 = getal.charAt(getal.length() - 4); */
             case 3:
             timer.get(0).getal2 = getal.charAt(getal.length() - 3);
             case 2:

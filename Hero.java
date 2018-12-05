@@ -1,6 +1,5 @@
-
 import greenfoot.*;
-
+import java.util.List;
 /**
  *
  * @author R. Springer
@@ -10,20 +9,19 @@ public class Hero extends Mover {
     private final double gravity;
     private final double acc;
     private final double drag;   
-    private boolean onGround;
-    private String button;
     private int teller;
-    private boolean mirror;
     private boolean facingRight;
     private boolean keyPressed;
     public String letter2 = new String();
     boolean noLetter = false;
     public int lives;
-    private boolean gameOver;
+    static boolean gameOver;
     private boolean firstAct = true;
     private int spawnX;
     private int spawnY;
     static int score;
+    private boolean activated;
+    private boolean died;
     public Hero() {
         super();
         gravity = 9.8;
@@ -42,18 +40,12 @@ public class Hero extends Mover {
             spawnY = getY();
         }
         Timer.timer ++;
-        if(Greenfoot.isKeyDown("h")) {
-            gameOver = false;
-            if (getWorld() instanceof World2) {
-                Greenfoot.setWorld(new World2());
-            }
-        }
         getWorld().showText(letter2,50,50);
+        getWorld().showText(Integer.toString(ScoreCounter.totalScore),50,550);
         if(!gameOver) {  
             checkLevens();
             animatie2();
             handleInput();
-            onGround = onGround();
             applyVelocity();
             velocityX *= drag;
             velocityY += acc;
@@ -62,7 +54,17 @@ public class Hero extends Mover {
             }
             detect();
         }
-         
+        else if(!activated) {
+            if(!died) {
+            Hero.score += Timer.secondsOver;
+        }
+            ScoreCounter.totalScore += Hero.score;
+            activated = true;
+        }
+        if(Greenfoot.isKeyDown("r")) {
+            gameOver = false;
+            resetWorld();
+        }
     }
 
     public void handleInput() { 
@@ -70,17 +72,17 @@ public class Hero extends Mover {
         if (Greenfoot.isKeyDown("a")) {
             velocityX = -5;
             facingRight = false;
-            if(onGround){
+            if(onGround()){
                 loopanimatie();                
             }
         } else if (Greenfoot.isKeyDown("d")) {
             velocityX = 5;
             facingRight = true;
-            if(onGround) {
+            if(onGround()) {
                 loopanimatie();
             }
         }
-        if ((Greenfoot.isKeyDown("w") && onGround) || (Greenfoot.isKeyDown("w") && isTouching(Ladder.class))) {
+        if ((Greenfoot.isKeyDown("w") && onGround()) || (Greenfoot.isKeyDown("w") && isTouching(Ladder.class))) {
             velocityY = -13;
         }
         if(Greenfoot.isKeyDown("space") && !keyPressed) {
@@ -146,11 +148,11 @@ public class Hero extends Mover {
     }
 
     public void animatie2() {
-        if(velocityX >= -0.3 && velocityX <= 0.3 && onGround) {
+        if(velocityX >= -0.3 && velocityX <= 0.3 && onGround()) {
             setImage("p1_front.png");
             scaleImage();
         }
-        if (!onGround) {
+        if (!onGround()) {
             setImage("p1_jump.png");
             scaleImage();
             mirrorImage();
@@ -162,10 +164,7 @@ public class Hero extends Mover {
     }
 
     public void mirrorImage() {
-        if(mirror && facingRight) {
-            getImage().mirrorHorizontally();
-        }
-        else if(!mirror && !facingRight) {
+        if(!facingRight) {
             getImage().mirrorHorizontally();
         }
     }
@@ -192,45 +191,59 @@ public class Hero extends Mover {
         if(lives == 0) {
             getWorld().addObject(new GameOver(),300,300);
             gameOver = true;
+            died = true;
         }
     }
 
     public void detect() {
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null && timer < 10) {
-                setLocation(spawnX,spawnY); 
+            if (enemy != null /*&& timer < 10*/) {
+                setLocation(spawnX,spawnY);
+                Greenfoot.delay(3);
                 lives --;
-                timer = 10;
+                //timer = 10;
                 break;
             }
             else{
-               timer --; 
+                //timer --; 
             }
-            
+
         }
-        for (Letter letter : getObjectsAtOffset(0,-80,Letter.class)) {
+        for (Letter letter : getObjectsAtOffset(0,getImage().getHeight() / 2 * -1,Letter.class)) {
             if (letter != null) {
                 noLetter = letter2.isEmpty();
                 if(noLetter && !letter.getHit()) {
                     if(letter.getUsedLetter()) {
-                    letter2 = letter.getLetter2();
-                    letter.hitByHero();
-                    score += 10;
-                }
-                else {
-                    score -= 10;
-                    letter.hitByHero();
-                }
+                        letter2 = letter.getLetter2();
+                        letter.hitByHero();
+                        score += 10;
+                    }
+                    else {
+                        score -= 10;
+                        letter.hitByHero();
+                    }
                 }
                 break;
             }
         }
-        if(isTouching(Deathtiles.class)) {
-              setLocation(spawnX,spawnY); 
-              lives --;
+        List <Deathtiles> deathtiles = getObjectsAtOffset(0,0,(Deathtiles.class));
+        if(deathtiles.size() != 0) {
+            setLocation(spawnX,spawnY); 
+            lives --;
         }
     }
+
     public int getLives() {
         return lives;
+    }
+
+    public void resetWorld() {
+        if (getWorld() instanceof Map1)  {Greenfoot.setWorld(new Map1());}
+         if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
+        else if (getWorld() instanceof TutorialLevel)  {Greenfoot.setWorld(new TutorialLevel());}
+        //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
+        //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
+        //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
+   
     }
 }

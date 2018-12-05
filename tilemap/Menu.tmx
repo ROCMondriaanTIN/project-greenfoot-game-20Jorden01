@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<map version="1.2" tiledversion="1.2.0" orientation="orthogonal" renderorder="right-down" width="10" height="10" tilewidth="60" tileheight="60" infinite="0" nextlayerid="5" nextobjectid="1">
+ <tileset firstgid="1" source="Menu.tsx.tmx"/>
+ <tileset firstgid="14" source="tiles.tsx.tmx"/>
+ <layer id="4" name="Tilelaag 1" width="10" height="10">
+  <data encoding="csv">
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,100,0,91,0,92,0,0,
+0,99,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,93,0,94,0,95,0,0,
+0,99,0,0,0,0,0,0,0,0,
+0,0,0,0,0,0,0,0,0,0,
+0,0,0,96,0,97,0,98,0,0,
+0,0,0,0,0,0,0,0,0,0
+</data>
+ </layer>
+</map>

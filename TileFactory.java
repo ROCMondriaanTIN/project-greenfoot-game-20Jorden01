@@ -1,4 +1,5 @@
 
+
 /**
  *
  * @author R. Springer
@@ -128,6 +129,36 @@ public class TileFactory {
                 case 49:
                 tile = new LetterFinish("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;
+                break;
+                case 77:
+                tile = new MenuTiles("Level_2.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 78:
+                tile = new MenuTiles("Level_3.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 79:
+                tile = new MenuTiles("Level_4.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 80:
+                tile = new MenuTiles("Level_5.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 81:
+                tile = new MenuTiles("Level_6.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 82:
+                tile = new MenuTiles("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 83:
+                tile = new MenuTiles("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 84:
+                tile = new MenuTiles("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 85:
+                tile = new MenuTiles("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
+                case 86:
+                tile = new MenuTiles("Level_1.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
             default:
                 tile = new Tile("grassMid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);

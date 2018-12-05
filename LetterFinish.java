@@ -14,6 +14,7 @@ public class LetterFinish extends Tile
     private boolean firstAct = true;
     private boolean activated;
     static int placedLetters = Letter.word.length();
+    private boolean finish;
     public LetterFinish(String image,int width,int heigth) {
         super(image,width,heigth);
         nummer2 = nummer;
@@ -42,9 +43,9 @@ public class LetterFinish extends Tile
                 break;
             }
         }
-        if(placedLetters == 0) {
-            Hero.score += Timer.secondsOver;
-            Greenfoot.stop();
+        if(placedLetters == 0 && finish == false) {  
+            Hero.gameOver = true;
+            finish  = true;
         }
     }
     public void toLetter() {
