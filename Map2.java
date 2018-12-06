@@ -89,6 +89,7 @@ public class Map2 extends World
         ce.update();
     }
     public void resetStatic() {
+        Hero.level = 2;
         Letter.nummer = 0;
         Letter.word = word;
         LetterFinish.nummer = 0;
@@ -97,6 +98,7 @@ public class Map2 extends World
         Heart.nummer2 = 0;
         Hero.score = 0;
         Vraag.vraag = vraag;
+        Hero.gameOver = false;
     }
     public void addObjects() {
         addObject(new Hud(),0,0);

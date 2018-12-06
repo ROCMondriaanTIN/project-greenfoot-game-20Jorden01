@@ -73,6 +73,7 @@ public class TutorialLevel extends World
         ce.update();
     }
     public void resetStatic() {
+        Hero.level = 0;
         Letter.nummer = 0;
         Letter.word = word;
         LetterFinish.nummer = 0;

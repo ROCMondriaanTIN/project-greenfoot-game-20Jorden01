@@ -8,8 +8,17 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class EndScreen extends Actor
 {
-    public EndScreen() {
+    private boolean firstAct = true;
+    private int nummer;
+    public EndScreen(int nummer) {
+        this.nummer = nummer;
+        if(nummer == 1) {
         setImage("EndScreen.png");
+    }
+    else{
+        GreenfootImage image = new GreenfootImage(Integer.toString(Hero.score), 30, Color.GREEN,null);
+            setImage(image);
+    }
     }
     /**
      * Act - do whatever the EndScreen wants to do. This method is called whenever
@@ -17,6 +26,13 @@ public class EndScreen extends Actor
      */
     public void act() 
     {
-        // Add your action code here.
+        if(firstAct) {
+        firstAct = false;
+        getWorld().addObject(new EndScreen(2),320,385);
+    }
+    if(Greenfoot.isKeyDown("enter")) {
+        Greenfoot.setWorld(new Menu());
+        getWorld().removeObject(this);
+    }
     }    
 }

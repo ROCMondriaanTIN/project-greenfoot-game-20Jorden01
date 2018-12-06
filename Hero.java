@@ -5,6 +5,8 @@ import java.util.List;
  * @author R. Springer
  */
 public class Hero extends Mover {
+    static int level;
+    public static int levelsFinished;
     private int timer;
     private final double gravity;
     private final double acc;
@@ -20,8 +22,9 @@ public class Hero extends Mover {
     private int spawnX;
     private int spawnY;
     static int score;
-    private boolean activated;
-    private boolean died;
+    static int totalScore;
+    private boolean activated = false;
+    private boolean died = false;
     public Hero() {
         super();
         gravity = 9.8;
@@ -41,7 +44,7 @@ public class Hero extends Mover {
         }
         Timer.timer ++;
         getWorld().showText(letter2,50,50);
-        getWorld().showText(Integer.toString(ScoreCounter.totalScore),50,550);
+        getWorld().showText(Integer.toString(Hero.totalScore),50,550);
         if(!gameOver) {  
             checkLevens();
             animatie2();
@@ -55,11 +58,15 @@ public class Hero extends Mover {
             detect();
         }
         else if(!activated) {
-            if(!died) {
-            Hero.score += Timer.secondsOver;
-        }
-            ScoreCounter.totalScore += Hero.score;
             activated = true;
+            if(!died) {
+                Hero.score += Timer.secondsOver;
+                getWorld().addObject(new EndScreen(1),300,300);
+                Hero.totalScore += Hero.score;
+                if(levelsFinished <= level) {
+                    levelsFinished = level + 1;
+                }
+            }
         }
         if(Greenfoot.isKeyDown("r")) {
             gameOver = false;
@@ -68,7 +75,7 @@ public class Hero extends Mover {
     }
 
     public void handleInput() { 
-        
+
         if (Greenfoot.isKeyDown("a")) {
             velocityX = -5;
             facingRight = false;
@@ -239,11 +246,11 @@ public class Hero extends Mover {
 
     public void resetWorld() {
         if (getWorld() instanceof Map1)  {Greenfoot.setWorld(new Map1());}
-         if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
+        if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
         else if (getWorld() instanceof TutorialLevel)  {Greenfoot.setWorld(new TutorialLevel());}
         //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
         //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
         //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
-   
+
     }
 }

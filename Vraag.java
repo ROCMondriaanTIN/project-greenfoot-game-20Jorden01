@@ -18,9 +18,6 @@ public class Vraag extends Hud
     {
         if(firstAct) {
             firstAct = false;
-            //setImage("invisible.png");
-            //getImage().drawString("Dit is een vraag:",getX(),getY());
-            //getWorld().showText("\u87CEEB Dit is een vraag.",getX(),getY());
             GreenfootImage image = new GreenfootImage(vraag, 30, Color.BLUE,null);
             setImage(image);
         }

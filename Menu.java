@@ -14,7 +14,8 @@ public class Menu extends World
      */
     public Menu()
     {    
-        super(600, 600, 1); 
+        super(600, 600, 1);
+        resetStatic();
         this.setBackground("bg2.png");
         int[][] map = {{-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
                 {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1},
@@ -29,5 +30,8 @@ public class Menu extends World
             };
 
         TileEngine te = new TileEngine(this, 60, 60, map);
+    }
+    public void resetStatic() {
+        MenuTiles.nummer = 0;       
     }
 }
