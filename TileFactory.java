@@ -160,6 +160,9 @@ public class TileFactory {
                 case 86:
                 tile = new MenuTiles("Level_1.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
+                case 87:
+                tile = new MenuTiles("ExitGame_11.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                break;
             default:
                 tile = new Tile("grassMid.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 tile.isSolid = true;

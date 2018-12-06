@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class MenuTiles extends Tile
 {
+    private int buttonInt = 0;
     private String button;
     public static int nummer;
     private int nummer2;
@@ -16,10 +17,15 @@ public class MenuTiles extends Tile
         super(image,width,heigth);
         int end = image.indexOf(".");
         int begin = image.indexOf("_") + 1;
-        button = image.substring(begin,end);
-        nummer2 = nummer;
-        nummer ++;
-        
+        button = image.substring(begin,end);        
+        if(image != "Letters/letter.png") {
+           buttonInt = Integer.parseInt(button);
+           nummer2 = nummer;
+           nummer ++;
+        }
+        else{
+            nummer2 = -1;
+        }
     }
     /**
      * Act - do whatever the MenuTiles wants to do. This method is called whenever
@@ -53,11 +59,13 @@ public class MenuTiles extends Tile
             if(Hero.levelsFinished > 3) {
             Greenfoot.setWorld(new TutorialLevel());
         }
+        case "11":
+            Greenfoot.setWorld(new StartScreen());
             break;   
         }
     }
     public void finishedLevels() {
-       if(Hero.levelsFinished >= nummer2 && !activated) {
+       if((Hero.levelsFinished >= nummer2 && !activated && nummer2 >= 0) || buttonInt >= 10) {
            getWorld().addObject(new MenuFinished(),x,y);
            //setImage("Level_" + button + ".png");
            activated = true;

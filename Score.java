@@ -27,8 +27,8 @@ public class Score extends Hud
     public void updateScore() {
         List <Score> score = getWorld().getObjects(Score.class);
         switch(getal.length()) {
-            /*case 4:
-            score.get(0).getal2 = getal.charAt(getal.length() - 4); */
+            case 4:
+            score.get(0).getal2 = getal.charAt(getal.length() - 4); 
             case 3:
             score.get(1).getal2 = getal.charAt(getal.length() - 3);
             case 2:

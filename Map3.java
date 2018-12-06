@@ -6,7 +6,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  * @author (your name) 
  * @version (a version number or a date)
  */
-public class Map2 extends World
+public class Map3 extends World
 {
     private CollisionEngine ce;
     private int spawnX = 100;
@@ -17,7 +17,7 @@ public class Map2 extends World
      * Constructor for objects of class MyWorld.
      *
      */
-    public Map2() {
+    public Map3() {
         // Create a new world with 600x400 cells with a cell size of 1x1 pixels.
         super(600, 600, 1, false);
         resetStatic();
@@ -89,7 +89,7 @@ public class Map2 extends World
         ce.update();
     }
     public void resetStatic() {
-        Hero.level = 2;
+        Hero.level = 3;
         Letter.nummer = 0;
         Letter.word = word;
         LetterFinish.nummer = 0;

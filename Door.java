@@ -9,7 +9,7 @@ import java.util.List;
 public class Door extends Tile
 {
     boolean open;    
-    private String image;
+    public String image;
     private String doorColor;
     private String buttonColor;
     public int doorX;

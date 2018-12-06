@@ -12,7 +12,7 @@ public class Map1 extends World
     private int spawnX = 1000;
     private int spawnY = 1750;
     private String word = "House";
-    private String vraag = "dit wordt een vraag.";
+    private String vraag = "wat is huis in het engels?";
     /**
      * Constructor for objects of class MyWorld.
      *

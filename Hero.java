@@ -179,7 +179,7 @@ public class Hero extends Mover {
     public void checkDoor() {
         Door door = (Door)getOneObjectAtOffset(0,0,Door.class);
         if(door != null) {
-            if(door.open) {
+            if(door.open && door.image != "door_closedTop.png") {
                 door.findOtherDoor();
                 setLocation(door.doorX(),door.doorY());
             }
@@ -245,12 +245,6 @@ public class Hero extends Mover {
     }
 
     public void resetWorld() {
-        if (getWorld() instanceof Map1)  {Greenfoot.setWorld(new Map1());}
-        if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
-        else if (getWorld() instanceof TutorialLevel)  {Greenfoot.setWorld(new TutorialLevel());}
-        //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
-        //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
-        //else if (getWorld() instanceof Map2)  {Greenfoot.setWorld(new Map2());}
-
+        Greenfoot.setWorld(new Map2());        
     }
 }
