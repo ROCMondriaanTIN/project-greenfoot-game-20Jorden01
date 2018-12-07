@@ -9,6 +9,7 @@ import java.util.List;
 public class Letter extends Tile
 {
     static String word;
+    static int counter;
     String word2 = "A";
     public String letter;
     private String image;
@@ -31,15 +32,15 @@ public class Letter extends Tile
      */
     public void act() 
     {
-        if(firstAct) {
-            firstAct = false;
+        if(firstAct) {            
+            firstAct = false;                        
             setImage("Letters/letter_" + getLetter() + ".png");
-            getImage().scale(60,60);
+            getImage().scale(60,60);            
         }    
     }
 
     public String getLetter() {
-        String[] letters = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};
+        String[] letters = {"A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"};        
         int teller = 0;
         if(nummer2 == 0) {            
             word2 = word.substring(0).toUpperCase();
@@ -60,7 +61,8 @@ public class Letter extends Tile
                     break;
                 }
             }
-            else if(word2.length() == 0) {
+            else if((counter > 0 && (Greenfoot.getRandomNumber(10) == 1)) || (word2.length() == 0)) {
+                counter --;
                 break;
             }
         }

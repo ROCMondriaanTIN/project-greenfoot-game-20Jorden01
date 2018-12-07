@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class TestWorld here.
  * 
@@ -8,6 +8,7 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
  */
 public class Map2 extends World
 {
+    private boolean firstAct = true;
     private CollisionEngine ce;
     private int spawnX = 100;
     private int spawnY = 1750;
@@ -86,6 +87,11 @@ public class Map2 extends World
 
     @Override
     public void act() {
+        if(firstAct) {
+            firstAct = false;
+            List <Letter> aantalLetters = getObjects(Letter.class);
+            Letter.counter = aantalLetters.size() - word.length();
+        }
         ce.update();
     }
     public void resetStatic() {

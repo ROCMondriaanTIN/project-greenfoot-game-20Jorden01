@@ -8,8 +8,6 @@ import java.util.List;
  */
 public class Timer extends Hud
 {
-    public String getal;
-    public char getal2 = '0';
     private boolean firstAct = true;
     static int secondsOver;
     static public int timer;

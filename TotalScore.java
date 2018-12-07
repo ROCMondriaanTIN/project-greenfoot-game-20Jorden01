@@ -8,8 +8,6 @@ import java.util.List;
  */
 public class TotalScore extends Hud
 {
-    private String getal;
-    private char getal2 = '0';
     /**
      * Act - do whatever the TotalScore wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.

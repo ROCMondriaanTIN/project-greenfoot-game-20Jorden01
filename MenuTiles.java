@@ -18,7 +18,7 @@ public class MenuTiles extends Tile
         int end = image.indexOf(".");
         int begin = image.indexOf("_") + 1;
         button = image.substring(begin,end);        
-        if(image != "Letters/letter.png") {
+        if(image != "ComingSoon.png") {
            buttonInt = Integer.parseInt(button);
            nummer2 = nummer;
            nummer ++;

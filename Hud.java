@@ -1,5 +1,5 @@
 import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
-
+import java.util.List;
 /**
  * Write a description of class Hud here.
  * 
@@ -9,6 +9,8 @@ import greenfoot.*;  // (World, Actor, GreenfootImage, Greenfoot and MouseInfo)
 public class Hud extends Actor
 {
     boolean firstAct = true;
+    public String getal;
+    public char getal2 = '0';
     public Hud() {
         setImage("invisible.png");
     }

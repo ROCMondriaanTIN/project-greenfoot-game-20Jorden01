@@ -204,15 +204,14 @@ public class Hero extends Mover {
 
     public void detect() {
         for (Actor enemy : getIntersectingObjects(Enemy.class)) {
-            if (enemy != null /*&& timer < 10*/) {
+            if (enemy != null && timer < 10) {
                 setLocation(spawnX,spawnY);
-                Greenfoot.delay(3);
                 lives --;
-                //timer = 10;
+                timer = 10;
                 break;
             }
             else{
-                //timer --; 
+                timer --; 
             }
 
         }
@@ -245,6 +244,6 @@ public class Hero extends Mover {
     }
 
     public void resetWorld() {
-        Greenfoot.setWorld(new Map2());        
+        Greenfoot.setWorld(new Menu());        
     }
 }

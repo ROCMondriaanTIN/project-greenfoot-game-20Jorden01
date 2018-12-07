@@ -143,19 +143,19 @@ public class TileFactory {
                 tile = new MenuTiles("Level_5.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
                 case 81:
-                tile = new MenuTiles("Level_6.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new MenuTiles("ComingSoon.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
                 case 82:
-                tile = new MenuTiles("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new MenuTiles("ComingSoon.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
                 case 83:
-                tile = new MenuTiles("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new MenuTiles("ComingSoon.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
                 case 84:
-                tile = new MenuTiles("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new MenuTiles("ComingSoon.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
                 case 85:
-                tile = new MenuTiles("Letters/letter.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
+                tile = new MenuTiles("ComingSoon.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);
                 break;
                 case 86:
                 tile = new MenuTiles("Level_1.png", TileEngine.TILE_WIDTH, TileEngine.TILE_HEIGHT);

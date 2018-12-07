@@ -8,8 +8,6 @@ import java.util.List;
  */
 public class Score extends Hud
 {
-    public String getal;
-    public char getal2 = '0';
     public Score() {
         setImage("Score/hud_0.png");
     }
@@ -39,6 +37,9 @@ public class Score extends Hud
         }
     }
     public void scoreToString() {
+        if(Hero.score < 0) {
+            Hero.score = 0;
+        }
         getal = Integer.toString(Hero.score);
     }
     public void updateImage() {
