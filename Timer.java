@@ -23,13 +23,8 @@ public class Timer extends Hud
     {
         if(firstAct) {
             firstAct = false;
-            secondsOver = 600;
         }
         if(!Hero.gameOver) {
-            if(secondsOver == 0) {
-                Hero.gameOver = true;    
-            }
-
             if(timer > 60) {
                 secondsOver --;
                 timer = 0;
@@ -46,8 +41,14 @@ public class Timer extends Hud
             case 3:
             timer.get(0).getal2 = getal.charAt(getal.length() - 3);
             case 2:
+            if(getal.length() == 2) {
+                timer.get(0).getal2= '0';
+            }
             timer.get(1).getal2 = getal.charAt(getal.length() - 2);
             case 1:
+            if(getal.length() == 1) {
+                timer.get(1).getal2= '0';
+            }
             timer.get(2).getal2 = getal.charAt(getal.length() - 1);
             default:
             break;

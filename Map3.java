@@ -10,6 +10,7 @@ public class Map3 extends World
 {
     private boolean firstAct = true;
     private CollisionEngine ce;
+    private int time = 600;
     private int spawnX = 1650;
     private int spawnY = 925;
     private String word = "number";
@@ -96,6 +97,7 @@ public class Map3 extends World
     }
 
     public void resetStatic() {
+        Timer.secondsOver = time;
         Hero.level = 3;
         Letter.nummer = 0;
         Letter.word = word;

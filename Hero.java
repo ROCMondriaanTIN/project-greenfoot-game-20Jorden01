@@ -43,8 +43,6 @@ public class Hero extends Mover {
             spawnY = getY();
         }
         Timer.timer ++;
-        getWorld().showText(letter2,50,50);
-        getWorld().showText(Integer.toString(Hero.totalScore),50,550);
         if(!gameOver) {  
             checkLevens();
             animatie2();
@@ -195,7 +193,7 @@ public class Hero extends Mover {
     }
 
     public void checkLevens() {
-        if(lives == 0) {
+        if(lives == 0 || Timer.secondsOver == 0) {
             getWorld().addObject(new GameOver(),300,300);
             gameOver = true;
             died = true;

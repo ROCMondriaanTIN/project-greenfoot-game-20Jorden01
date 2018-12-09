@@ -10,6 +10,7 @@ public class TutorialLevel extends World
 {
     private boolean firstAct = true;
     private CollisionEngine ce;
+    private int time = 600;
     private int spawnX = 100;
     private int spawnY = 800;
     private String word = "Test";
@@ -79,7 +80,7 @@ public class TutorialLevel extends World
         ce.update();
     }
     public void resetStatic() {
-        
+        Timer.secondsOver = time;
         Hero.level = 0;
         Letter.nummer = 0;
         Letter.word = word;

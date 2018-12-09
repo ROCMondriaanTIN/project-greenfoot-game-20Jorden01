@@ -33,6 +33,7 @@ public class Hud extends Actor
                 getWorld().addObject(new Timer(),i * 20 + 280,25);
             }
             getWorld().addObject(new Vraag(),300,580);
+            getWorld().addObject(new HeroLetter(),20,70);
         }
     }
 

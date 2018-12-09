@@ -52,12 +52,12 @@ public class MenuTiles extends Tile
             break;
             case "4":
             if(Hero.levelsFinished > 2) {
-            Greenfoot.setWorld(new TutorialLevel());
+            Greenfoot.setWorld(new Map3());
         }
             break;
             case "5":
             if(Hero.levelsFinished > 3) {
-            Greenfoot.setWorld(new TutorialLevel());
+            Greenfoot.setWorld(new Map4());
         }
         case "11":
             Greenfoot.setWorld(new StartScreen());
