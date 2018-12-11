@@ -32,13 +32,11 @@ public class Button extends Tile
 
     public void checkHero(){
         if(isTouching(Hero.class)) {
-            //setImage("button" + color + "_pressed.png");
             buttonPressed = true;
         }
         else if (buttonPressed){
             counter ++;
             if(counter > 500) {
-                //setImage("button" + color + ".png");
                 buttonPressed = false;
                 counter = 0;
             }

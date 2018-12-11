@@ -17,6 +17,6 @@ public class Deathtiles extends Tile
      */
     public void act() 
     {
-        // Add your action code here.
+
     }    
 }

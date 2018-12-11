@@ -73,7 +73,6 @@ public class Hero extends Mover {
     }
 
     public void handleInput() { 
-
         if (Greenfoot.isKeyDown("a")) {
             velocityX = -5;
             facingRight = false;
@@ -205,6 +204,7 @@ public class Hero extends Mover {
             if (enemy != null && timer < 10) {
                 setLocation(spawnX,spawnY);
                 lives --;
+                score -= 20;
                 timer = 10;
                 break;
             }
@@ -232,15 +232,12 @@ public class Hero extends Mover {
         }
         List <Deathtiles> deathtiles = getObjectsAtOffset(0,0,(Deathtiles.class));
         if(deathtiles.size() != 0) {
-            setLocation(spawnX,spawnY); 
+            setLocation(spawnX,spawnY);
+            score -= 10;
             lives --;
         }
     }
-
-    public int getLives() {
-        return lives;
-    }
-
+    
     public void resetWorld() {
         Greenfoot.setWorld(new Menu());        
     }

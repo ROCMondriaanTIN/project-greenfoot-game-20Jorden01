@@ -19,14 +19,15 @@ public class MenuTiles extends Tile
         int begin = image.indexOf("_") + 1;
         button = image.substring(begin,end);        
         if(image != "ComingSoon.png") {
-           buttonInt = Integer.parseInt(button);
-           nummer2 = nummer;
-           nummer ++;
+            buttonInt = Integer.parseInt(button);
+            nummer2 = nummer;
+            nummer ++;
         }
         else{
             nummer2 = -1;
         }
     }
+
     /**
      * Act - do whatever the MenuTiles wants to do. This method is called whenever
      * the 'Act' or 'Run' button gets pressed in the environment.
@@ -35,6 +36,7 @@ public class MenuTiles extends Tile
     {
         finishedLevels();
     }
+
     public void worldSelector(){
         switch(button) {
             case "1":
@@ -42,34 +44,34 @@ public class MenuTiles extends Tile
             break;
             case "2":
             if(Hero.levelsFinished > 0) {
-            Greenfoot.setWorld(new Map1());
-        }
+                Greenfoot.setWorld(new Map1());
+            }
             break;
             case "3":
             if(Hero.levelsFinished > 1) {
-            Greenfoot.setWorld(new Map2());
-        }
+                Greenfoot.setWorld(new Map2());
+            }
             break;
             case "4":
             if(Hero.levelsFinished > 2) {
-            Greenfoot.setWorld(new Map3());
-        }
+                Greenfoot.setWorld(new Map3());
+            }
             break;
             case "5":
             if(Hero.levelsFinished > 3) {
-            Greenfoot.setWorld(new Map4());
-        }
-        case "11":
+                Greenfoot.setWorld(new Map4());
+            }
+            case "11":
             Greenfoot.setWorld(new StartScreen());
             break;   
         }
     }
+
     public void finishedLevels() {
-       if((Hero.levelsFinished >= nummer2 && !activated && nummer2 >= 0) || buttonInt >= 10) {
-           getWorld().addObject(new MenuFinished(),x,y);
-           //setImage("Level_" + button + ".png");
-           activated = true;
+        if((Hero.levelsFinished >= nummer2 && !activated && nummer2 >= 0) || buttonInt >= 10) {
+            getWorld().addObject(new MenuFinished(),x,y);
+            activated = true;
         }
     }
-    
+
 }

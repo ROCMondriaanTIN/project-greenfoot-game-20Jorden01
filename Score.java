@@ -28,10 +28,19 @@ public class Score extends Hud
             case 4:
             score.get(0).getal2 = getal.charAt(getal.length() - 4); 
             case 3:
+            if(getal.length() == 3) {
+                score.get(0).getal2= '0';
+            }
             score.get(1).getal2 = getal.charAt(getal.length() - 3);
             case 2:
+            if(getal.length() == 2) {
+                score.get(1).getal2= '0';
+            }
             score.get(2).getal2 = getal.charAt(getal.length() - 2);
             case 1:
+            if(getal.length() == 1) {
+                score.get(2).getal2= '0';
+            }
             score.get(3).getal2 = getal.charAt(getal.length() - 1);
             break;
         }

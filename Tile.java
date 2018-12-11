@@ -6,7 +6,6 @@ import greenfoot.*;
  * @author R. Springer
  */
 public class Tile extends BasicTile {
-
     public boolean isSolid = false;
     private static int id;
     public int _id;
