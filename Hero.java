@@ -211,7 +211,6 @@ public class Hero extends Mover {
             else{
                 timer --; 
             }
-
         }
         for (Letter letter : getObjectsAtOffset(0,getImage().getHeight() / 2 * -1,Letter.class)) {
             if (letter != null) {
@@ -223,7 +222,7 @@ public class Hero extends Mover {
                         score += 10;
                     }
                     else {
-                        score -= 10;
+                        score -= 20;
                         letter.hitByHero();
                     }
                 }
